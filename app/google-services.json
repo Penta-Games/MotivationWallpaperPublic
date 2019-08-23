@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "370768035991",
+    "firebase_url": "https://motivation-wallpaper-bb2fa.firebaseio.com",
+    "project_id": "motivation-wallpaper-bb2fa",
+    "storage_bucket": "motivation-wallpaper-bb2fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370768035991:android:406c7c30d76cacdb",
+        "android_client_info": {
+          "package_name": "com.wallpaper.motivation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370768035991-nr8cltmpjrg18tr75c1ui2057j0u5prk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCr9Bf6GuBwFa4ZVx55GQ1fXuzriT8xB5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370768035991-nr8cltmpjrg18tr75c1ui2057j0u5prk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
