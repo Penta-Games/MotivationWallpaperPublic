@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.materialwallpaper">
+    package="com.wallpaper.motivation">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
-        android:name="com.app.materialwallpaper.activities.MyApplication"
+        android:name="com.wallpaper.motivation.activities.MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,7 +22,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name="com.app.materialwallpaper.activities.ActivitySplash"
+            android:name="com.wallpaper.motivation.activities.ActivitySplash"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name">
             <intent-filter>
@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.app.materialwallpaper.activities.MainActivity"
+            android:name="com.wallpaper.motivation.activities.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name">
             <intent-filter>
@@ -42,26 +42,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.app.materialwallpaper.activities.ActivityCategoryDetail"
+            android:name="com.wallpaper.motivation.activities.ActivityCategoryDetail"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.app.materialwallpaper.activities.ActivitySearch"
+            android:name="com.wallpaper.motivation.activities.ActivitySearch"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.app.materialwallpaper.activities.ActivitySettings"
+            android:name="com.wallpaper.motivation.activities.ActivitySettings"
             android:configChanges="orientation|keyboardHidden|screenSize" />
 
         <activity
-            android:name="com.app.materialwallpaper.activities.ActivityPinchZoom"
+            android:name="com.wallpaper.motivation.activities.ActivityPinchZoom"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/image_zoom" />
         <activity
-            android:name="com.app.materialwallpaper.activities.ActivitySetAsWallpaper"
+            android:name="com.wallpaper.motivation.activities.ActivitySetAsWallpaper"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label=""
             android:theme="@style/AppMaterialTheme" />
         <activity
-            android:name="com.app.materialwallpaper.activities.ActivityImageSlider"
+            android:name="com.wallpaper.motivation.activities.ActivityImageSlider"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppMaterialTheme" />
 
@@ -78,7 +78,7 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 
         <service
-            android:name="com.app.materialwallpaper.utilities.NotificationExtenderExample"
+            android:name="com.wallpaper.motivation.utilities.NotificationExtenderExample"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE">
             <intent-filter>

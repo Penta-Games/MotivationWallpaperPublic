@@ -19,7 +19,7 @@ android {
     defaultConfig {
         applicationId 'com.wallpaper.motivation'
 
-        manifestPlaceholders = [onesignal_app_id: "c8e80dae-0ccd-47f7-86e7-66b997123456",
+        manifestPlaceholders = [onesignal_app_id: "20efc888-1807-44fb-9930-60505e1c4f7c",
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: "REMOTE"]
 

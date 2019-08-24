@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.app.materialwallpaper.utilities.ZoomableImageView
+    <com.wallpaper.motivation.utilities.ZoomableImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
