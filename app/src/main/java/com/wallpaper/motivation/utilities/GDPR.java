@@ -1,3 +1,4 @@
+/*
 package com.wallpaper.motivation.utilities;
 
 import android.app.Activity;
@@ -10,19 +11,13 @@ import com.google.ads.consent.ConsentFormListener;
 import com.google.ads.consent.ConsentInfoUpdateListener;
 import com.google.ads.consent.ConsentInformation;
 import com.google.ads.consent.ConsentStatus;
-import com.google.ads.mediation.admob.AdMobAdapter;
-import com.google.android.gms.ads.AdRequest;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class GDPR {
 
-    public static AdRequest getAdRequest(Activity activity) {
-        return new AdRequest.Builder()
-                .addNetworkExtrasBundle(AdMobAdapter.class, GDPR.getBundleAd(activity))
-                .build();
-    }
+
 
     public static Bundle getBundleAd(Activity act) {
         Bundle extras = new Bundle();
@@ -110,3 +105,4 @@ public class GDPR {
 
 
 }
+*/

@@ -108,33 +108,6 @@
 
     <include layout="@layout/include_row_separator" />
 
-    <com.balysv.materialripple.MaterialRippleLayout
-        android:id="@+id/lyt_privacy_policy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:mrl_rippleAlpha="0.2"
-        app:mrl_rippleColor="@color/ripple_color"
-        app:mrl_rippleHover="true"
-        app:mrl_rippleOverlay="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/menu_settings_privacy_policy"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-    </com.balysv.materialripple.MaterialRippleLayout>
-
-    <include layout="@layout/include_row_separator" />
 
     <com.balysv.materialripple.MaterialRippleLayout
         android:id="@+id/lyt_about"

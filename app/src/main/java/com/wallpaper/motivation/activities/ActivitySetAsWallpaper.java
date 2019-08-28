@@ -26,11 +26,7 @@ import android.widget.Toast;
 import com.wallpaper.motivation.Config;
 import com.wallpaper.motivation.R;
 import com.wallpaper.motivation.utilities.Constant;
-import com.wallpaper.motivation.utilities.GDPR;
 import com.balysv.materialripple.MaterialRippleLayout;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -46,7 +42,6 @@ public class ActivitySetAsWallpaper extends AppCompatActivity {
     String str_image;
     Toolbar toolbar;
     Bitmap bitmap = null;
-    private InterstitialAd interstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +53,6 @@ public class ActivitySetAsWallpaper extends AppCompatActivity {
                 getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             }
         }
-
-        initAds();
-        loadInterstitialAd();
-
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
@@ -164,7 +155,6 @@ public class ActivitySetAsWallpaper extends AppCompatActivity {
                     public void run() {
                         alertDialog.dismiss();
                         lyt_progress.setVisibility(View.GONE);
-                        showInterstitialAd();
                     }
                 }, Constant.DELAY_SET_WALLPAPER);
 
@@ -197,7 +187,6 @@ public class ActivitySetAsWallpaper extends AppCompatActivity {
                     public void run() {
                         alertDialog.dismiss();
                         lyt_progress.setVisibility(View.GONE);
-                        showInterstitialAd();
                     }
                 }, Constant.DELAY_SET_WALLPAPER);
 
@@ -229,7 +218,6 @@ public class ActivitySetAsWallpaper extends AppCompatActivity {
                     public void run() {
                         alertDialog.dismiss();
                         lyt_progress.setVisibility(View.GONE);
-                        showInterstitialAd();
                     }
                 }, Constant.DELAY_SET_WALLPAPER);
 
@@ -267,7 +255,6 @@ public class ActivitySetAsWallpaper extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     progressDialog.dismiss();
-                                    showInterstitialAd();
                                 }
                             }, Constant.DELAY_SET_WALLPAPER);
                         } catch (IOException e) {
@@ -300,38 +287,6 @@ public class ActivitySetAsWallpaper extends AppCompatActivity {
             result = getResources().getDimensionPixelSize(resourceId);
         }
         return result;
-    }
-
-    private void initAds() {
-        if (Config.ENABLE_ADMOB_INTERSTITIAL_ADS) {
-            MobileAds.initialize(ActivitySetAsWallpaper.this, getResources().getString(R.string.admob_app_id));
-        }
-    }
-
-    private void loadInterstitialAd() {
-        if (Config.ENABLE_ADMOB_INTERSTITIAL_ADS) {
-            interstitialAd = new InterstitialAd(getApplicationContext());
-            interstitialAd.setAdUnitId(getResources().getString(R.string.admob_interstitial_unit_id));
-            interstitialAd.loadAd(GDPR.getAdRequest(ActivitySetAsWallpaper.this));
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdClosed() {
-                    closeApp();
-                }
-            });
-        }
-    }
-
-    private void showInterstitialAd() {
-        if (Config.ENABLE_ADMOB_INTERSTITIAL_ADS) {
-            if (interstitialAd != null && interstitialAd.isLoaded()) {
-                interstitialAd.show();
-            } else {
-                closeApp();
-            }
-        } else {
-            closeApp();
-        }
     }
 
     private void closeApp() {

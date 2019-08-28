@@ -39,12 +39,8 @@ import com.wallpaper.motivation.adapters.AdapterSearch;
 import com.wallpaper.motivation.adapters.AdapterWallpaper;
 import com.wallpaper.motivation.models.Wallpaper;
 import com.wallpaper.motivation.utilities.Constant;
-import com.wallpaper.motivation.utilities.GDPR;
 import com.wallpaper.motivation.utilities.ItemOffsetDecoration;
 import com.wallpaper.motivation.utilities.Tools;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -69,7 +65,6 @@ public class ActivitySearch extends AppCompatActivity {
     private ProgressBar progressBar1;
     private ProgressBar progressBar;
     private View parent_view, lyt_no_item;
-    private AdView adView;
     String tags;
     Tools tools;
 
@@ -90,7 +85,6 @@ public class ActivitySearch extends AppCompatActivity {
         initComponent();
 
         setupToolbar();
-        loadBannerAd();
 
         if (getIntent().hasExtra("tags")) {
             tags = getIntent().getStringExtra("tags");
@@ -467,37 +461,6 @@ public class ActivitySearch extends AppCompatActivity {
         }
     }
 
-    public void loadBannerAd() {
-        if (Config.ENABLE_ADMOB_BANNER_ADS_MAIN_PAGE) {
-            MobileAds.initialize(this, getResources().getString(R.string.admob_app_id));
-            adView = findViewById(R.id.adView);
-            adView.loadAd(GDPR.getAdRequest(this));
-            adView.setAdListener(new AdListener() {
-
-                @Override
-                public void onAdClosed() {
-                }
-
-                @Override
-                public void onAdFailedToLoad(int error) {
-                    adView.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAdLeftApplication() {
-                }
-
-                @Override
-                public void onAdOpened() {
-                }
-
-                @Override
-                public void onAdLoaded() {
-                    adView.setVisibility(View.VISIBLE);
-                }
-            });
-        }
-    }
 
     private void showRefresh(boolean show) {
         if (show) {

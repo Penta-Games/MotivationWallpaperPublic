@@ -2,16 +2,12 @@
 <resources>
 
     <!--app info-->
-    <string name="app_name">Material Wallpaper</string>
-    <string name="app_version">Version 3.0.0</string>
+    <string name="app_name">Motivation Wallpaper</string>
+    <string name="app_version">Version 1.0</string>
     <string name="app_email">help.solodroid@gmail.com</string>
-    <string name="app_copyright">Copyright &#169; 2019 Solodroid Developer \n All rights reserved</string>
+    <string name="app_copyright">All Wallpaper backgrounds are from Unsplash.com</string>
 
-    <!--admob ads id-->
-    <string name="admob_publisher_id">pub-3940256099942544</string>
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="admob_banner_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="admob_interstitial_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+
 
     <!--tab title-->
     <string name="tab_category">Category</string>

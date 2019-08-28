@@ -51,16 +51,11 @@ import com.wallpaper.motivation.adapters.AdapterTags;
 import com.wallpaper.motivation.models.Wallpaper;
 import com.wallpaper.motivation.utilities.Constant;
 import com.wallpaper.motivation.utilities.DBHelper;
-import com.wallpaper.motivation.utilities.GDPR;
 import com.wallpaper.motivation.utilities.Tools;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager;
 import com.beloo.widget.chipslayoutmanager.SpacingItemDecoration;
 import com.github.chrisbanes.photoview.PhotoView;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -96,8 +91,6 @@ public class ActivityImageSlider extends AppCompatActivity implements SensorEven
     ImageButton btn_favorite, btn_download, btn_share, btn_set;
     Toolbar toolbar;
     ProgressDialog progressDialog;
-    private InterstitialAd interstitialAd;
-    private AdView adView;
     LinearLayout lyt_action;
     RecyclerView recyclerView_tags;
     AdapterTags adapterTags;
@@ -134,9 +127,6 @@ public class ActivityImageSlider extends AppCompatActivity implements SensorEven
         dbHelper = new DBHelper(ActivityImageSlider.this);
         tools = new Tools(ActivityImageSlider.this);
 
-        initAds();
-        loadBannerAd();
-        loadInterstitialAd();
 
         btn_favorite = findViewById(R.id.btn_favorite);
         btn_download = findViewById(R.id.btn_download);
@@ -861,7 +851,6 @@ public class ActivityImageSlider extends AppCompatActivity implements SensorEven
                             lyt_progress.setVisibility(View.GONE);
                             //Toast.makeText(ActivityImageSlider.this, R.string.msg_success, Toast.LENGTH_SHORT).show();
 
-                            showInterstitialAd();
 
                         }
                     }, Constant.DELAY_SET_WALLPAPER);
@@ -899,7 +888,6 @@ public class ActivityImageSlider extends AppCompatActivity implements SensorEven
                             lyt_progress.setVisibility(View.GONE);
                             //Toast.makeText(ActivityImageSlider.this, R.string.msg_success, Toast.LENGTH_SHORT).show();
 
-                            showInterstitialAd();
 
                         }
                     }, Constant.DELAY_SET_WALLPAPER);
@@ -935,7 +923,6 @@ public class ActivityImageSlider extends AppCompatActivity implements SensorEven
                             lyt_progress.setVisibility(View.GONE);
                             //Toast.makeText(ActivityImageSlider.this, R.string.msg_success, Toast.LENGTH_SHORT).show();
 
-                            showInterstitialAd();
 
                         }
                     }, Constant.DELAY_SET_WALLPAPER);
@@ -975,7 +962,6 @@ public class ActivityImageSlider extends AppCompatActivity implements SensorEven
                                     progressDialog.dismiss();
                                     //Toast.makeText(ActivityImageSlider.this, R.string.msg_success, Toast.LENGTH_SHORT).show();
 
-                                    showInterstitialAd();
                                 }
                             }, Constant.DELAY_SET_WALLPAPER);
                         } catch (IOException e) {
@@ -990,67 +976,6 @@ public class ActivityImageSlider extends AppCompatActivity implements SensorEven
         alert.show();
     }
 
-    private void initAds() {
-        if (Config.ENABLE_ADMOB_INTERSTITIAL_ADS) {
-            MobileAds.initialize(ActivityImageSlider.this, getResources().getString(R.string.admob_app_id));
-        }
-    }
 
-    private void loadInterstitialAd() {
-        if (Config.ENABLE_ADMOB_INTERSTITIAL_ADS) {
-            interstitialAd = new InterstitialAd(ActivityImageSlider.this);
-            interstitialAd.setAdUnitId(getResources().getString(R.string.admob_interstitial_unit_id));
-            interstitialAd.loadAd(GDPR.getAdRequest(ActivityImageSlider.this));
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdClosed() {
-                    ActivityImageSlider.this.finish();
-                    Toast.makeText(ActivityImageSlider.this, R.string.msg_success, Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-    }
-
-    private void showInterstitialAd() {
-        if (Config.ENABLE_ADMOB_INTERSTITIAL_ADS) {
-            if (interstitialAd != null && interstitialAd.isLoaded()) {
-                interstitialAd.show();
-            } else {
-                Toast.makeText(ActivityImageSlider.this, R.string.msg_success, Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    private void loadBannerAd() {
-        if (Config.ENABLE_ADMOB_BANNER_ADS_WALLPAPER_DETAIL) {
-            adView = findViewById(R.id.adView);
-            adView.loadAd(GDPR.getAdRequest(ActivityImageSlider.this));
-            adView.setAdListener(new AdListener() {
-
-                @Override
-                public void onAdClosed() {
-                }
-
-                @Override
-                public void onAdFailedToLoad(int error) {
-                    adView.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAdLeftApplication() {
-                }
-
-                @Override
-                public void onAdOpened() {
-                }
-
-                @Override
-                public void onAdLoaded() {
-                    adView.setVisibility(View.VISIBLE);
-                }
-            });
-
-        }
-    }
 
 }

@@ -97,8 +97,7 @@ public class ActivitySettings extends AppCompatActivity {
             }
         });
 
-        lyt_privacy_policy = findViewById(R.id.lyt_privacy_policy);
-        getPrivacyPolicy();
+
 
         lyt_about = findViewById(R.id.lyt_about);
         lyt_about.setOnClickListener(new View.OnClickListener() {

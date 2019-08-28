@@ -65,17 +65,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppMaterialTheme" />
 
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/admob_app_id" />
 
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
 
-        <activity
-            android:name="com.google.android.gms.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+
 
         <service
             android:name="com.wallpaper.motivation.utilities.NotificationExtenderExample"

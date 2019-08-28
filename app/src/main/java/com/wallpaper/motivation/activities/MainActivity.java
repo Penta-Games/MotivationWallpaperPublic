@@ -29,9 +29,6 @@ import com.wallpaper.motivation.fragments.FragmentClassic;
 import com.wallpaper.motivation.fragments.FragmentExplore;
 import com.wallpaper.motivation.fragments.FragmentFavorite;
 import com.wallpaper.motivation.utilities.DBHelper;
-import com.wallpaper.motivation.utilities.GDPR;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdView;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -64,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    private AdView adView;
     private static final int REQUEST = 112;
     DBHelper dbHelper;
 
@@ -87,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         }
 
-        loadBannerAd();
 
         navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -118,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         //requestStoragePermission();
-        GDPR.updateConsentStatus(this);
 
     }
 
@@ -192,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
 
-            case R.id.drawer_more:
+/*            case R.id.drawer_more:
                 if (!menuItem.isChecked()) {
                     selectedIndex = MORE;
                     menuItem.setChecked(true);
@@ -201,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
+                return true;*/
 
             case R.id.drawer_share:
                 if (!menuItem.isChecked()) {
@@ -295,36 +289,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void loadBannerAd() {
-        if (Config.ENABLE_ADMOB_BANNER_ADS_MAIN_PAGE) {
-            adView = findViewById(R.id.adView);
-            adView.loadAd(GDPR.getAdRequest(MainActivity.this));
-            adView.setAdListener(new AdListener() {
 
-                @Override
-                public void onAdClosed() {
-                }
-
-                @Override
-                public void onAdFailedToLoad(int error) {
-                    adView.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAdLeftApplication() {
-                }
-
-                @Override
-                public void onAdOpened() {
-                }
-
-                @Override
-                public void onAdLoaded() {
-                    adView.setVisibility(View.VISIBLE);
-                }
-            });
-        }
-    }
 
     @TargetApi(16)
     private void requestStoragePermission() {

@@ -30,11 +30,8 @@ import com.wallpaper.motivation.adapters.AdapterWallpaper;
 import com.wallpaper.motivation.models.Wallpaper;
 import com.wallpaper.motivation.utilities.Constant;
 import com.wallpaper.motivation.utilities.DBHelper;
-import com.wallpaper.motivation.utilities.GDPR;
 import com.wallpaper.motivation.utilities.ItemOffsetDecoration;
 import com.wallpaper.motivation.utilities.Tools;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,7 +53,6 @@ public class ActivityCategoryDetail extends AppCompatActivity {
     View lyt_no_item;
     Tools tools;
     String category_id, category_name;
-    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +77,6 @@ public class ActivityCategoryDetail extends AppCompatActivity {
 
         setupToolbar();
 
-        loadBannerAd();
 
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue, R.color.red);
@@ -343,35 +338,6 @@ public class ActivityCategoryDetail extends AppCompatActivity {
         }
     }
 
-    private void loadBannerAd() {
-        if (Config.ENABLE_ADMOB_BANNER_ADS_MAIN_PAGE) {
-            adView = findViewById(R.id.adView);
-            adView.loadAd(GDPR.getAdRequest(ActivityCategoryDetail.this));
-            adView.setAdListener(new AdListener() {
 
-                @Override
-                public void onAdClosed() {
-                }
-
-                @Override
-                public void onAdFailedToLoad(int error) {
-                    adView.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAdLeftApplication() {
-                }
-
-                @Override
-                public void onAdOpened() {
-                }
-
-                @Override
-                public void onAdLoaded() {
-                    adView.setVisibility(View.VISIBLE);
-                }
-            });
-        }
-    }
 
 }

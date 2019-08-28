@@ -33,11 +33,8 @@ import com.wallpaper.motivation.adapters.AdapterCategory;
 import com.wallpaper.motivation.models.Category;
 import com.wallpaper.motivation.utilities.Constant;
 import com.wallpaper.motivation.utilities.DBHelper;
-import com.wallpaper.motivation.utilities.GDPR;
 import com.wallpaper.motivation.utilities.ItemOffsetDecoration;
 import com.wallpaper.motivation.utilities.Tools;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.InterstitialAd;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,7 +52,6 @@ public class FragmentCategory extends Fragment {
     private ArrayList<Category> arrayList;
     ProgressBar progressBar;
     private SearchView searchView;
-    private InterstitialAd interstitialAd;
     int counter = 1;
     View lyt_no_item, view;
     Tools tools;
@@ -72,7 +68,6 @@ public class FragmentCategory extends Fragment {
 
         setHasOptionsMenu(true);
 
-        loadInterstitialAd();
 
         dbHelper = new DBHelper(getActivity());
         tools = new Tools(getActivity());
@@ -115,7 +110,6 @@ public class FragmentCategory extends Fragment {
                 intent.putExtra("category_name", obj.getCategory_name());
                 startActivity(intent);
 
-                showInterstitialAd();
             }
         });
 
@@ -244,31 +238,6 @@ public class FragmentCategory extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private void loadInterstitialAd() {
-        if (Config.ENABLE_ADMOB_INTERSTITIAL_ADS) {
-            interstitialAd = new InterstitialAd(getActivity());
-            interstitialAd.setAdUnitId(getResources().getString(R.string.admob_interstitial_unit_id));
-            interstitialAd.loadAd(GDPR.getAdRequest(getActivity()));
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdClosed() {
-                    interstitialAd.loadAd(GDPR.getAdRequest(getActivity()));
-                }
-            });
-        }
-    }
 
-    private void showInterstitialAd() {
-        if (Config.ENABLE_ADMOB_INTERSTITIAL_ADS) {
-            if (interstitialAd != null && interstitialAd.isLoaded()) {
-                if (counter == Config.INTERSTITIAL_ADS_INTERVAL) {
-                    interstitialAd.show();
-                    counter = 1;
-                } else {
-                    counter++;
-                }
-            }
-        }
-    }
 
 }
