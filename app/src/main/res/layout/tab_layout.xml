@@ -32,7 +32,7 @@
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:background="@color/tablayout"
                 android:paddingLeft="@dimen/tab_indicator_padding"
                 android:paddingRight="@dimen/tab_indicator_padding"
                 app:tabIndicatorColor="@color/tabIndicatorColor"
