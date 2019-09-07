@@ -4,7 +4,7 @@
     <!--app main color-->
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorPrimary">#121212</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorAccent">#525252</color>
     <color name="tablayout">#1A1A1A</color>
 
     <!--tab color-->
